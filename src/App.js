@@ -32,14 +32,17 @@ function Tabbed({ content }) {
   return (
     <div>
       <div className="tabs">
-        <Tab num={0} activeTab={activeTab} onClick={setActiveTab} />
-        <Tab num={1} activeTab={activeTab} onClick={setActiveTab} />
-        <Tab num={2} activeTab={activeTab} onClick={setActiveTab} />
-        <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
+        <Tab num={0} activeTab={activeTab} onClick={setActiveTab} key={"1"} />
+        <Tab num={1} activeTab={activeTab} onClick={setActiveTab} key={"2"} />
+        <Tab num={2} activeTab={activeTab} onClick={setActiveTab} key={"3"} />
+        <Tab num={3} activeTab={activeTab} onClick={setActiveTab} key={"4"} />
       </div>
 
       {activeTab <= 2 ? (
-        <TabContent item={content.at(activeTab)} />
+        <TabContent
+          item={content.at(activeTab)}
+          key={content.at(activeTab).summary}
+        />
       ) : (
         <DifferentContent />
       )}
@@ -57,6 +60,9 @@ function Tab({ num, activeTab, onClick }) {
     </button>
   );
 }
+
+console.log(<DifferentContent test={32} />);
+console.log(DifferentContent());
 
 function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
