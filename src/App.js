@@ -67,11 +67,20 @@ console.log(DifferentContent());
 function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
-
+  console.log("RENDER");
   function handleInc() {
     setLikes(likes + 1);
   }
-
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+    console.log(likes);
+  }
+  function handleTripInc() {
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+  }
   return (
     <div className="tab-content">
       <h4>{item.summary}</h4>
@@ -85,12 +94,12 @@ function TabContent({ item }) {
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
           <button onClick={handleInc}>+</button>
-          <button>+++</button>
+          <button onClick={handleTripInc}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Undo</button>
+        <button onClick={handleUndo}>Undo</button>
         <button>Undo in 2s</button>
       </div>
     </div>
