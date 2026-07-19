@@ -81,6 +81,13 @@ function TabContent({ item }) {
     setLikes((likes) => likes + 1);
     setLikes((likes) => likes + 1);
   }
+
+  function handleTripIncLater() {
+    setTimeout(handleTripInc, 2000);
+  }
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000);
+  }
   return (
     <div className="tab-content">
       <h4>{item.summary}</h4>
@@ -94,13 +101,13 @@ function TabContent({ item }) {
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
           <button onClick={handleInc}>+</button>
-          <button onClick={handleTripInc}>+++</button>
+          <button onClick={handleTripIncLater}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
         <button onClick={handleUndo}>Undo</button>
-        <button>Undo in 2s</button>
+        <button onClick={handleUndoLater}>Undo in 2s</button>
       </div>
     </div>
   );
